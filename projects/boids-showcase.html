@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unity Project | Portfolio</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="https://kit.fontawesome.com/a2e0b2f1b9.js" crossorigin="anonymous"></script>
+  <style>
+    /* Ensure the Unity iframe fits cleanly */
+    .unity-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      background-color: #111;
+    }
+
+    iframe {
+      width: 960px;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 191, 166, 0.4);
+    }
+
+    @media (max-width: 1000px) {
+      iframe {
+        width: 95%;
+        height: 70vh;
+      }
+    }
+  </style>
+</head>
+<body class="projects-page">
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="../index.html" class="nav-link">Home</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html" class="nav-link">Projects</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="../contact.html" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <section class="page-wrapper">
+    <h1 class="page-header">Unity Simulation</h1>
+    <p style="text-align:center;">A short description of your Unity project — what it demonstrates, and what tech was used.</p>
+
+    <div class="unity-container">
+      <!-- Embed the Unity WebGL build using an iframe -->
+      <iframe src="../BoidsBuild/index.html"></iframe>
+    </div>
+
+    <h2>Description</h2>
+    <p>[Describe what the project is about, its goals, and results.]</p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li>Boid simulation logic</li>
+      <li>Custom shaders for visual feedback</li>
+      <li>Interactive camera and player controls</li>
+    </ul>
+  </section>
+</body>
+</html>

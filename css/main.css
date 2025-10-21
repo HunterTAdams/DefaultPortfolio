@@ -1,0 +1,479 @@
+/* ========== THEME VARIABLES ========== */
+:root {
+  --bg-color: #0e0e0e;
+  --text-color: #e0e0e0;
+  --accent-color: #00bfa6;
+  --hover-color: #1a1a1a;
+  --font-main: 'Inter', sans-serif;
+}
+
+/* ========== GLOBAL STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* ========== NAVBAR ========== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background-color: var(--hover-color);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* ========== HOME PAGE ========== */
+.home-container {
+  display: flex;
+  height: 100vh;
+}
+
+.home-left, .home-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-left img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home-description {
+  margin-top: 1rem;
+  text-align: center;
+  max-width: 400px;
+}
+
+/* ========== BUTTONS ========== */
+.button {
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  background: transparent;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+}
+
+/* ========== PROJECTS GRID ========== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.project-card {
+  background-color: var(--hover-color);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* ========== CONTACT FORM ========== */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+input, textarea {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: var(--text-color);
+}
+
+input[type="submit"] {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #00d4b4;
+}
+
+/* ======== NEW HOME LAYOUT ======== */
+
+.home-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Left: Profile Area */
+.home-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
+.profile-block {
+  border: 2px solid var(--accent-color);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: var(--accent-color);
+  font-size: 1.8rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #00ffd5;
+}
+
+/* Right: Fullscreen Buttons */
+.home-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.big-button {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background-color: var(--hover-color);
+  color: var(--text-color);
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+/* Hover Effect - expand leftward & color shift */
+.big-button:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  transform: translateX(-5%);
+}
+
+/* Optional subtle divider between buttons */
+.big-button:not(:last-child) {
+  border-bottom: 1px solid #111;
+}
+
+/* Optional per-button color tweak (if you want distinct hues later) */
+.projects-btn:hover { background-color: #00bfa6; }
+.about-btn:hover { background-color: #0080ff; }
+.contact-btn:hover { background-color: #ff4081; }
+
+/* ======== GRADIENT HOVER TRANSITIONS FOR HOME BUTTONS ======== */
+
+.big-button {
+  flex: 1;
+  width: 100%;
+  border: none;
+  color: var(--text-color);
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay on hover */
+.big-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-color), #00ffd5);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.big-button:hover::before {
+  transform: translateX(0);
+}
+
+.big-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.big-button:hover {
+  color: var(--bg-color);
+  transform: translateX(-5%);
+}
+
+/* Distinct accent colors for each section */
+.projects-btn::before {
+  background: linear-gradient(135deg, #00bfa6, #00ffd5);
+}
+.about-btn::before {
+  background: linear-gradient(135deg, #0080ff, #00c3ff);
+}
+.contact-btn::before {
+  background: linear-gradient(135deg, #ff4081, #ff80ab);
+}
+
+/* Divider between buttons */
+.big-button:not(:last-child) {
+  border-bottom: 1px solid #111;
+}
+
+/* ======== MINIMALIST PAGE THEMES ======== */
+
+.page-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 2rem;
+}
+
+.page-wrapper h1, .page-wrapper h2 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.page-wrapper p, .page-wrapper li {
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--hover-color);
+  border-bottom: 1px solid #222;
+}
+
+nav h2 {
+  color: var(--accent-color);
+}
+
+nav ul li a {
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* Accent theme per page */
+body.projects-page {
+  --accent-color: #00bfa6;
+}
+
+body.about-page {
+  --accent-color: #0080ff;
+}
+
+body.contact-page {
+  --accent-color: #ff4081;
+}
+
+/* Optional subtle fade-in for content */
+.page-wrapper {
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== NAVBAR REWORK ======== */
+/* ===== Navbar ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid #222;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* ======== PAGE HEADER ======== */
+
+.page-header {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ======== ABOUT BOX ======== */
+
+.about-box {
+  background-color: var(--hover-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 191, 166, 0.15);
+}
+
+.about-box h2 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.about-box p, .about-box ul {
+  text-align: left;
+  opacity: 0.9;
+  line-height: 1.7;
+}
+
+/* ======== CONTACT FORM IMPROVEMENTS ======== */
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+input, textarea {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: var(--text-color);
+}
+
+/* dynamic textarea resizing */
+textarea {
+  resize: none;
+  overflow-y: auto; /* allow scroll when full */
+  transition: height 0.2s ease;
+  min-height: 120px;
+  max-height: 350px; /* stop growing after this */
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* submit button */
+input[type="submit"] {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  background-color: #00ffd5;
+}

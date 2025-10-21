@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects | Portfolio</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <script defer src="../js/main.js"></script>
+  <script src="https://kit.fontawesome.com/a2e0b2f1b9.js" crossorigin="anonymous"></script>
+</head>
+<body class="projects-page">
+  <nav class="navbar">
+    <div class="nav-left">
+        <a href="../index.html" class="nav-link">Home</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="index.html" class="nav-link">Projects</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <section class="page-wrapper">
+    <h1 class="page-header">Projects</h1>
+
+    <div class="projects-grid">
+      <div class="project-card" onclick="navigate('boids-showcase.html')">
+        <img src="../assets/images/unityproject-thumb.jpg" alt="Unity Simulation">
+        <h3>Unity Simulation</h3>
+        <p>Interactive boid and chainblade prototype</p>
+        <small>[Tags: Unity, C#, WebGL]</small>
+      </div>
+
+      <div class="project-card" onclick="navigate('project-template.html')">
+        <img src="../assets/images/sample1.jpg" alt="Project 1">
+        <h3>Project Title</h3>
+        <p>[Short description here]</p>
+        <small>[Tags: Unity, C#, Simulation]</small>
+      </div>
+
+      <div class="project-card" onclick="navigate('project-template.html')">
+        <img src="../assets/images/sample2.jpg" alt="Project 2">
+        <h3>Project Title</h3>
+        <p>[Short description here]</p>
+        <small>[Tags: Unreal, Blueprints]</small>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
