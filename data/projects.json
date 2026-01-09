@@ -1,0 +1,434 @@
+{
+  "Boids Simulation": {
+    "sections": [
+    {
+      "type": "media",
+      "content": "<img src='assets/images/BoidSimImage.png' alt='Boids Simulation Overview'>"
+    },
+    {
+      "type": "h2",
+      "content": "About the Project"
+    },
+    {
+      "type": "p",
+      "content": "Boids Simulation was an experimental project that I took on to challenge my understanding of optimization. I first gained exposure to the concept of group motion and flocking behavior modeling in college, and I was fascinated by the complexity involved to mimic the simple graces found in the natural world. Through this project, I was able to develop increasingly efficient boids simulations, ultimately creating a model that could run at a much higher FPS rate (for example, 400 birds visualized at 70 FPS with the naive model vs 400 birds at 700 FPS with my optimized one, i.e. a 10 fold difference). "
+    },
+    {
+      "type": "h2",
+      "content": "Overview"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Engine: Unity",
+        "Programming Languages: C#, HLSL"
+      ]
+    },
+    {
+      "type": "h3",
+      "content": "Skills"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "- Spatial partitioning for neighbor search",
+        "- Compute shader implementation",
+        "- Time complexity and performance optimization"
+      ]
+    },
+    {
+      "type": "h3",
+      "content": "Key Accomplishments"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "- I developed 5 separate levels of flock modeling with increasing optimization",
+        "- I learned how to write a compute shader.",
+        "- I created front-end UI components to make the model more user-friendly and adaptable in real time. "
+      ]
+    },
+    {
+      "type": "h2",
+      "content": "Implementation Details"
+    },
+    {
+      "type": "h3",
+      "content": "What is a boids simulator?"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Boids are artificial bird-like or bird-oid objects originally modeled by Craig Reynolds in order to simulate the flocking patterns of birds and group motion. This artificial life simulation relies on 3 simple rules:",
+        "- Separation: Strength of force to stay away from other boids",
+        "- Alignment: Strength of force to look in the same direction as other boids", 
+        "- Cohesion: Strength of force to stay close to other boids",
+        "My boid simulator is fundamentally built on these same concepts and adheres to these 3 rules."
+      ]
+    },
+    {
+      "type":"h3",
+      "content": "The Models"
+    },
+    {
+      "type": "ul",
+      "items": ["My goal was to establish 5 different simulation modes with various levels of optimization."]
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Model 1: Naive Boids",
+        "- It applies the 3 boid rules independently.",
+        "- For each rule, each boid performs a check against all other boids in the simulation resulting in 3 O(n^2) passes per frame",
+        "- Incredibly inefficient and scales exponentially worse as more boids are added to the simulation"
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Model 2: Single Pass Evaluation", 
+        "- Combines the separation, alignment, and cohesion into a single iteration", 
+        "- Instead of scanning all boids 3 times, it scans all boids once and applies all 3 rules simultaneously",
+        "- It is still a O(n^2) time complexity but it has lower cost because it is done once instead of 3 times"
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Model 3: Spatial Partition Neighbor Search",
+        "- Instead of searching for every boid in the simulation, it first divides space into grids",
+        "- Boids are then keep track of the partition that it is in and only needs to check neighboring grid partitions for neighboring boids",
+        "- Fastly reduces the average number of neighboring comparisons. It still has a O(n^2) time complexity at worse when the partitions are too large, but on average has a much lower one",
+        "- In this implementation it applies the 3 boid rules independently "
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Model 4: Spatial Partition Single Pass", 
+        "- Exact same as the 3rd implementation but has the 2nd implementation of a single pass"
+      ]
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Model 5: Compute Shader Implementation",
+        "- Implemented the 2nd optimized naive algorithm by running it on the GPU in parallel via a compute shader",
+        "- This shifts the workload from the CPU to the GPU which is a more optimized hardware for large simultaneous processing"
+      ]
+    },
+    {
+      "type": "h3",
+      "content": "Final Touches"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Once the models were complete, I wanted to update the UI to allow the simulator to make real-time adjustments without restarting the entire simulation.",
+        "- I included parameters that allowed real time controls for the boid count, rule weights, perception radii, speed limits, turn rate, and drag",
+        "- I created an on-screen FPS counter to provide immediate feedback onto the effectiveness of the various levels of optimization",
+        "- I furthermore integrated a toggleable option which changes the color of boids in relation to their maximum speed for more visual clarity and feedback",
+        "Overall, being able to adjust the aforementioned values in made it effective and entertaining to experiment with these models. "
+      ]
+    }
+
+  ]
+  },
+
+  "Overtime Deliveries": {
+    "sections": [
+      {
+        "type": "media",
+        "content": "<video src='assets/videos/DemoVideo.mp4' controls></video>"
+      },
+      {
+        "type": "h2",
+        "content": "About"
+      },
+      {
+        "type": "p",
+        "content": "This game, titled “Overtime Deliveries,” was created in a joint effort between myself and my friend Kevin. I was responsible for the following: octree implementation, drone controls, package retrieval system, package deployment system, explosion animations, and drone modeling. Meanwhile, Kevin was responsible for modeling the terrain and lighting effects. Together, we were able to expand upon an assignment that only called for a “lunar landing simulator” and created a playable and fun game in which the player controls a drone and must pick up packages and deliver them to spots on the map, ensuring that the packages do not break on release. This was a blast to create with my friend and taught me how to optimize complex terrain collision detection via Octrees. I got a lot of joy out of directly visualizing the algorithm and implementing it in an interactive way."
+      },
+      {
+        "type":"h2",
+        "content": "Overview"
+      },
+      {
+        "type":"ul",
+        "items": [
+          "Engine: N/A",
+          "Coding Language: C++"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Technical Skills"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- Optimized complex terrain collision detection via Octrees",
+          "- Implemented physics based movement controller"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Key Accomplishments"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- I collaborated effectively on different parts with a partner",
+          "- We completed this project in only 1 week"
+        ]
+      },
+      {
+        "type": "h2",
+        "content": "Implementation Details"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The following is a summary of the components I worked on in this project:"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Octree Implementation"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- An octree is a tree-data structure in which each internal node has exactly eight children made to take in vertex/mesh data of a terrain model and divide up space of the complex model to create a series of hitboxes to describe the shape of the space. This allows for quick search at a point by moving through the octree",
+          "- I chose to use the octree because despite initial slowing for an initial creation of the octree, this system vastly makes up for speed of determining points of contact between objects and the mesh during real movements"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Drone Implementation"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- I created a physics-based flight simulation",
+          "- I programmed a system in which pressing on the various arrow keys caused a force to be applied in the corresponding direction adjusted for the direction that the drone was facing (example: if facing south direction, the up arrow will move south, right will move west, etc)",
+          "- I also accounted for force in the vertical movement of the drone",
+          "- Most importantly, I ensured that when colliding with the octree/terrain, the terrain calculated the appropriate normal value on average based on the collisions being detected and pushed the drone back away from the terrain"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Package system"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- We wanted to have a fun game system in which the user had the ability pick up packages and release them",
+          "- Once released, packages were programmed to fall according to gravity, eventually colliding with the ground",
+          "- In order to add challenge to the game, I made it so that depending on the speed of the package at the time of ground-strike, a package could be destroyed"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Particle System"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- I added a particle system which created an explosion of particles whenever the package collided with the floor. This created visual allure and drama in the game."
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Drone Modeling"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- Modeled the drone myself entirely in Maya. I was inspired by science fiction stories with dystopian drone delivery systems that reign beyond the existence of humanity itself. "
+        ]
+      }
+    ]
+  },
+
+  "Ringsweeper": {
+    "sections": [
+      {
+        "type": "media",
+        "content": "<img src='assets/images/ringsweeper_overview.png' alt='Ringsweeper Gameplay Overview'>"
+      },
+      {
+        "type": "h2",
+        "content": "Project Introduction"
+      },
+      {
+        "type": "p",
+        "content": "Ringsweeper is a reimagining of the classic game Minesweeper, rebuilt to take place entirely on the interior surface of a 3D cylinder. While visually presented in three dimensions, the game preserves the exact rules and logic of traditional Minesweeper by projecting a 2D grid onto a curved surface."
+      },
+      {
+        "type": "p",
+        "content": "This project was developed during a 3-day game jam with one other developer, with a focus on experimentation, clarity, and visual polish."
+      },
+      {
+        "type": "h2",
+        "content": "2D-to-3D Spatial Mapping"
+      },
+      {
+        "type": "p",
+        "content": "The core technical challenge was mapping a traditional 2D Minesweeper grid onto a cylindrical interior while maintaining intuitive gameplay and spatial readability."
+      },
+      {
+        "type": "p",
+        "content": "Each tile is positioned along the inside of the cylinder using angular offsets, effectively wrapping the grid horizontally while preserving consistent spacing and interaction rules."
+      },
+      {
+        "type": "h2",
+        "content": "Minesweeper Systems & Presentation"
+      },
+      {
+        "type": "p",
+        "content": "I implemented the full Minesweeper ruleset from scratch, including bomb placement, flood-fill behavior, tile state transitions, win and loss conditions, and animation sequencing."
+      },
+      {
+        "type": "p",
+        "content": "Visual effects and animations were layered on top of the logic to reinforce feedback without compromising clarity, helping sell the curved space while keeping the game readable."
+      },
+      {
+        "type": "h2",
+        "content": "Collaboration & Takeaways"
+      },
+      {
+        "type": "p",
+        "content": "Due to the short timeframe, we scoped aggressively and prioritized a strong core mechanic before adding polish. Frequent iteration ensured that the 3D presentation enhanced rather than hindered gameplay."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Preserving clarity when experimenting with unconventional spatial layouts",
+          "Rapid implementation and iteration under tight constraints",
+          "How visual framing can refresh familiar mechanics without altering rules"
+        ]
+      }
+    ]
+  },
+
+  "A Life Well Lived": {
+    "sections": [
+      {
+        "type": "media",
+        "content": "<img src='assets/images/dialogue_tooling.png' alt='Dialogue Tooling Interface'>"
+      },
+      {
+        "type": "h2",
+        "content": "Project Introduction"
+      },
+      {
+        "type": "p",
+        "content": "A Life Well Lived is a narrative-driven, choose-your-own-adventure game developed during a game jam. My primary contribution was the creation of a custom dialogue tooling system that allowed a team of writers to author and connect branching narrative content efficiently."
+      },
+      {
+        "type": "p",
+        "content": "The project emphasized iteration speed and close collaboration between technical and non-technical team members."
+      },
+      {
+        "type": "h2",
+        "content": "Narrative Tooling & Data-Driven Design"
+      },
+      {
+        "type": "p",
+        "content": "I designed a dialogue graph system where narrative nodes could be authored and connected through a structured interface. This allowed writers to build branching dialogue without requiring programmer intervention."
+      },
+      {
+        "type": "p",
+        "content": "The system was fully data-driven, enabling rapid iteration and easy modification of narrative structure throughout development."
+      },
+      {
+        "type": "h2",
+        "content": "Implementation Details"
+      },
+      {
+        "type": "p",
+        "content": "Special attention was given to preventing broken narrative paths by validating connections and identifying incomplete nodes early. This reduced runtime errors and made iteration safer during the jam."
+      },
+      {
+        "type": "p",
+        "content": "The runtime system cleanly traverses dialogue states, ensuring consistent behavior regardless of narrative complexity."
+      },
+      {
+        "type": "h2",
+        "content": "What I Learned"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Designing tools for usability rather than raw flexibility",
+          "Supporting non-technical collaborators through good editor UX",
+          "The importance of validation in data-driven narrative systems",
+          "How tooling directly impacts team velocity"
+        ]
+      }
+    ]
+  },
+
+  "Truckbomb": {
+    "sections": [
+      {
+        "type": "media",
+        "content": "<video src='assets/videos/truckbomb_gameplay.mp4' controls></video>"
+      },
+      {
+        "type": "h2",
+        "content": "Project Introduction"
+      },
+      {
+        "type": "p",
+        "content": "Truckbomb is an in-development, chaotic, endless arcade driving game focused on multitasking under pressure. The player must drive while simultaneously managing multiple escalating minigames that demand constant attention."
+      },
+      {
+        "type": "p",
+        "content": "This was a longer-term collaborative project developed with a group of designers and developers."
+      },
+      {
+        "type": "h2",
+        "content": "UI, Feedback, and Visual Clarity"
+      },
+      {
+        "type": "p",
+        "content": "Given the chaotic nature of the game, my work focused on ensuring that information was communicated clearly and instantly, even as multiple systems competed for the player’s attention."
+      },
+      {
+        "type": "p",
+        "content": "UI elements and visual effects were designed to reinforce urgency while remaining readable under pressure."
+      },
+      {
+        "type": "h2",
+        "content": "Feature Implementation & Minigames"
+      },
+      {
+        "type": "p",
+        "content": "I contributed to feature implementation, UI elements, and VFX across multiple minigames, including engine repair, wheel maintenance, radio tuning, and bomb defusal."
+      },
+      {
+        "type": "p",
+        "content": "Each minigame required a distinct visual language while still fitting cohesively within the overall aesthetic of the game."
+      },
+      {
+        "type": "h2",
+        "content": "Collaboration & Takeaways"
+      },
+      {
+        "type": "p",
+        "content": "Working on a longer-term project required adapting to an evolving codebase and continuously iterating based on playtesting and team feedback."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Designing systems that communicate instantly under cognitive load",
+          "Balancing chaos with readability through UI and VFX",
+          "Collaborating effectively within an evolving team project",
+          "Iterative refinement based on real player behavior"
+        ]
+      }
+    ]
+  }
+}
