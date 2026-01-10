@@ -259,54 +259,163 @@
       },
       {
         "type": "h2",
-        "content": "Project Introduction"
+        "content": "About"
       },
       {
         "type": "p",
-        "content": "Ringsweeper is a reimagining of the classic game Minesweeper, rebuilt to take place entirely on the interior surface of a 3D cylinder. While visually presented in three dimensions, the game preserves the exact rules and logic of traditional Minesweeper by projecting a 2D grid onto a curved surface."
+        "content": "As the name might suggest, Ringsweeper is inspired by Minesweeper, one of my favorite games of all time (please don’t judge my record time of 74 seconds on expert mode). When my friend Tuukka and I decided to join the 2025 Game Maker’s Took Kit (GMTK) Game Jam, I knew that we wanted to explore Unity’s shader graph and explore the VFX graph, so we decided to create a 3D version of Minesweeper complete with wave-like effects upon tile reveals and explosions vs fireworks depending on the success of the player. I enjoyed the challenge of working under the time crunch of a game jam while getting to explore this new skillset with one of my closest friends."
       },
       {
         "type": "p",
-        "content": "This project was developed during a 3-day game jam with one other developer, with a focus on experimentation, clarity, and visual polish."
+        "content": "Play it here: https://fall211.itch.io/ringsweeper "
       },
       {
         "type": "h2",
-        "content": "2D-to-3D Spatial Mapping"
-      },
-      {
-        "type": "p",
-        "content": "The core technical challenge was mapping a traditional 2D Minesweeper grid onto a cylindrical interior while maintaining intuitive gameplay and spatial readability."
-      },
-      {
-        "type": "p",
-        "content": "Each tile is positioned along the inside of the cylinder using angular offsets, effectively wrapping the grid horizontally while preserving consistent spacing and interaction rules."
-      },
-      {
-        "type": "h2",
-        "content": "Minesweeper Systems & Presentation"
-      },
-      {
-        "type": "p",
-        "content": "I implemented the full Minesweeper ruleset from scratch, including bomb placement, flood-fill behavior, tile state transitions, win and loss conditions, and animation sequencing."
-      },
-      {
-        "type": "p",
-        "content": "Visual effects and animations were layered on top of the logic to reinforce feedback without compromising clarity, helping sell the curved space while keeping the game readable."
-      },
-      {
-        "type": "h2",
-        "content": "Collaboration & Takeaways"
-      },
-      {
-        "type": "p",
-        "content": "Due to the short timeframe, we scoped aggressively and prioritized a strong core mechanic before adding polish. Frequent iteration ensured that the 3D presentation enhanced rather than hindered gameplay."
+        "content": "Overview:"
       },
       {
         "type": "ul",
         "items": [
-          "Preserving clarity when experimenting with unconventional spatial layouts",
-          "Rapid implementation and iteration under tight constraints",
-          "How visual framing can refresh familiar mechanics without altering rules"
+          "Engine: Unity",
+          "Coding Language: C#"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Skills"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- Recursive implementation of reveal",
+          "- Procedurally orient objects onto spline path"
+        ]
+      },
+      {
+        "type": "h3",
+        "content": "Key Accomplishments"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- Designed and completed the game in only 4 days",
+          "- I learned how to create visual effects using Unity’s shader graph and VFX graph"
+        ]
+      },
+      {
+        "type": "h2",
+        "content": "Implementation Details"
+      },
+      {
+        "type": "h3",
+        "content": "The Inspiration. What is Minesweeper?"
+      },
+      {
+        "type": "p",
+        "content": "In order to explain Ringsweeper, it is important to talk about the inspiration behind it: "
+      },
+      {
+        "type": "p",
+        "content": "Minesweeper. Minesweeper is a logic puzzle game centered around a board with hidden mines dispersed throughout a board of clickable tiles. The goal of the game is to clear the board without detonating any mines. "
+      },
+      {
+        "type": "ul",
+        "items": [
+          "For our project, our first step was to break down the rules of Minesweeper and implement them into Ringsweeper. Here is a breakdown of Minesweeper: ",
+          "- The game is set on a grid",
+          "- The first click of the game won’t be a mine but instead an empty tile ",
+          "- After the first click, the game generates the board by placing all of the mines randomly across the grid",
+          "- If the player presses onto a mine, all mines are revealed and the game is over",
+          "- Mine tiles once revealed provide information on the number of mines in the 3x3 grid surrounding that tile"
+        ]
+      },
+      {
+        "type": "media",
+        "content": "<img src='assets/images/MinesweeperExample1.png' alt='Minesweeper Example 1'>"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "- Using the information provided, the player can mark unrevealed tiles as mines to ensure they remember where they are and to not select a mine accidentally",
+          "- The information provided by the tiles and the assumption of where known mine tiles are, the player can then label safe tiles ",
+          "- The game ends once the player as revealed all non-bomb tiles inside of the entire grid"
+        ]
+      },
+      {
+        "type": "p",
+        "content": "Example board:"
+      },
+      {
+        "type": "media",
+        "content": "<img src='assets/images/MinesweeperExample2.png' alt='Minesweeper Example 2'>"
+      },
+      {
+        "type": "p",
+        "content": "For our purposes, we implemented similar mine logic with random placement of mines across a grid shaped like a ring. We made sure that each tile kept track of adjacent mines. "
+      },
+      {
+        "type": "h3",
+        "content": "Custom Features"
+      },
+      {
+        "type": "p",
+        "content": "Ringsweeper was designed to be more than just a 3D copy of Minesweeper though. We had a number of new elements that we wanted to add and that came with creating a ring-like system rather than a flat grid. "
+      },
+      {
+        "type": "p",
+        "content": ""
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Recursive based implementation of the revealing of tiles",
+          "- We wanted to make revealing of tiles more satisfying, so we made it so that when a user presses an empty tile, it reveals the connected tiles sequentially (this is in contrast to traditional Minesweeper where all tiles are revealed simultaneously).",
+          "- This implementation took in the direction that the wave is approaching from in order to rotate tiles in the appropriate/corresponding direction. ",
+          "- I chose a recursive implementation because in this circumstance, I realized that there is no consistent iterative length to the expanding wave meaning that instead the function must continually call itself to reveal more tiles as new tiles are being revealed by the wave. "
+        ]
+      },
+      {
+        "type": "p",
+        "content": ""
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Wrapping Rule Adjustment",
+          "- Since the Ringsweeper map is in the shape of a cylinder, the ends of the game wrap and connect. Unlike Minesweeper where the ends on either side do not interact with each other at all, we now had to implement a continuous system. ",
+          "- I programmed the game so that when a mine is randomly placed onto the ends of the grid, they must affect the mine count of the non-mine tiles on the other end. "
+        ]
+      },
+      {
+        "type": "p",
+        "content": ""
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Spline Implementation",
+          "- A spline is a piecewise parametric curve used to approximate shapes through curves",
+          "- Since we wanted to make the game in the shape of a cylinder, a spline was the perfect method to create the visual we wanted.",
+          "- I therefore created a function that mapped the grid onto a spline. This ultimately gave me, as well as any other designer/developer, full control to shape and build the grid in any 3D path"
+        ]
+      },
+      {
+        "type": "p",
+        "content": ""
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Unique Visual Effects",
+          "- There were a number of visual elements that we wanted to create to make the game visually appealing:",
+          "- Skybox: a method of creating backgrounds to make video game levels appear large",
+          "-- I created a custom skybox inside of Unity’s shader graph designed to look like purple galaxies so that the players felt immersed in space",
+          "- Stopwatch:",
+          "-- I designed a stopwatch with segmented displays for each of the digits. This vintage feel paid homage to the original Minesweeper while functionally counting the time that the player has spent trying to solve the Ringsweeper grid",
+          "- Loss effects:",
+          "-- I wanted to make loss effects reveal how I felt after losing a game of Minesweeper, so for Ringsweeper I spent a lot of time making a custom loss effect where all the bombs revealed themselves then a dramatic explosion burst from the center of the cylinder",
+          "- Win animations:",
+          "-- Similarly, I wanted a visual effect that captured the joy of a successful game so I created a win animation with fireworks emerging from the central stopwatch. This was done using Unity’s VFX graph. "
         ]
       }
     ]
